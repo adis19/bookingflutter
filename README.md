@@ -1,16 +1,282 @@
-# booking
+# BookingPro - Hotel Booking Mobile Application
 
-A new Flutter project.
+Современное мобильное приложение для бронирования отелей, созданное на Flutter с интеграцией Firebase и API отелей.
 
-## Getting Started
+## ✨ Особенности
 
-This project is a starting point for a Flutter application.
+### 🔐 Авторизация и регистрация
+- Регистрация и вход через email/пароль
+- Интеграция с Firebase Authentication
+- Подтверждение email
+- Восстановление пароля
+- Гостевой режим (поиск без регистрации)
 
-A few resources to get you started if this is your first Flutter project:
+### 🏨 Поиск и бронирование отелей
+- Поиск отелей по городам
+- Интеграция с Amadeus API для получения реальных данных
+- Фильтрация по цене, рейтингу, удобствам
+- Детальная информация об отелях
+- Система бронирования
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 👤 Профиль пользователя
+- Управление профилем
+- История бронирований
+- Избранные отели
+- Настройки приложения
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 🎨 UI/UX
+- Современный Material Design 3
+- Темная и светлая темы
+- Плавные анимации
+- Онбординг для новых пользователей
+- Адаптивный дизайн
+
+## 🚀 Установка и запуск
+
+### Предварительные требования
+- Flutter SDK (версия 3.7.2 или выше)
+- Dart SDK
+- Android Studio / VS Code
+- Firebase проект
+
+### Установка зависимостей
+```bash
+flutter pub get
+```
+
+### Конфигурация Firebase
+1. Создайте проект в [Firebase Console](https://console.firebase.google.com/)
+2. Добавьте Android/iOS приложения
+3. Скачайте файлы конфигурации:
+   - `google-services.json` для Android
+   - `GoogleService-Info.plist` для iOS
+4. Обновите `lib/firebase_options.dart` с вашими реальными ключами
+
+### Конфигурация Amadeus API
+1. Зарегистрируйтесь на [Amadeus for Developers](https://developers.amadeus.com/)
+2. Получите API ключи
+3. Обновите константы в `lib/core/constants/app_constants.dart`:
+```dart
+static const String amadeusApiKey = 'YOUR_AMADEUS_API_KEY';
+static const String amadeusApiSecret = 'YOUR_AMADEUS_API_SECRET';
+```
+
+### Запуск приложения
+```bash
+flutter run
+```
+
+## 📁 Структура проекта
+
+```
+lib/
+├── core/                          # Базовая функциональность
+│   ├── constants/                 # Константы приложения
+│   ├── models/                    # Базовые модели данных
+│   ├── routes/                    # Навигация и роуты
+│   ├── services/                  # Сервисы (Auth, Hotel API)
+│   └── theme/                     # Темы и стили
+├── features/                      # Функциональные модули
+│   ├── auth/                      # Авторизация
+│   ├── booking/                   # Бронирование
+│   ├── home/                      # Главная страница
+│   ├── hotel/                     # Детали отелей
+│   ├── main/                      # Основная навигация
+│   ├── onboarding/               # Онбординг
+│   ├── profile/                   # Профиль пользователя
+│   ├── search/                    # Поиск отелей
+│   └── splash/                    # Заставка
+└── main.dart                      # Точка входа
+```
+
+## 🛠 Технологии
+
+### Frontend
+- **Flutter** - Кроссплатформенный фреймворк
+- **Dart** - Язык программирования
+- **Provider** - Управление состоянием
+- **Google Fonts** - Типографика
+- **Cached Network Image** - Кэширование изображений
+- **Smooth Page Indicator** - Индикаторы страниц
+
+### Backend & APIs
+- **Firebase Authentication** - Авторизация
+- **Cloud Firestore** - База данных
+- **Firebase Storage** - Хранение файлов
+- **Amadeus API** - Данные отелей
+- **Dio** - HTTP клиент
+
+### Локальное хранение
+- **SharedPreferences** - Пользовательские настройки
+- **Hive** - Быстрая локальная база данных
+
+### Утилиты
+- **Geolocator** - Геолокация
+- **URL Launcher** - Открытие ссылок
+- **Image Picker** - Выбор изображений
+- **Intl** - Интернационализация
+
+## 📋 Основные экраны
+
+### 1. Splash Screen
+- Анимированная заставка
+- Инициализация сервисов
+- Проверка первого запуска
+
+### 2. Onboarding
+- 3 слайда с преимуществами приложения
+- Плавные анимации и переходы
+- Возможность пропустить
+
+### 3. Авторизация
+- Вход через email/пароль
+- Регистрация с валидацией
+- Восстановление пароля
+- Социальные сети (готово к интеграции)
+
+### 4. Главная страница
+- Быстрый поиск
+- Популярные направления
+- Недавно просмотренные отели
+- Персональные рекомендации
+
+### 5. Поиск отелей
+- Поиск по городам
+- Фильтры (цена, рейтинг, удобства)
+- Сортировка результатов
+- Карта с отелями
+
+### 6. Профиль
+- Информация о пользователе
+- История бронирований
+- Избранные отели
+- Настройки приложения
+
+## 🔧 Настройка для разработки
+
+### Отладка
+```bash
+flutter run --debug
+```
+
+### Сборка для релиза
+```bash
+# Android
+flutter build apk --release
+
+# iOS
+flutter build ios --release
+```
+
+### Анализ кода
+```bash
+flutter analyze
+```
+
+### Тестирование
+```bash
+flutter test
+```
+
+## 🌐 API Интеграция
+
+### Amadeus API Endpoints
+- **Hotel Search**: `GET /v2/shopping/hotel-offers`
+- **Location Search**: `GET /v1/reference-data/locations`
+- **Hotel Details**: `GET /v2/shopping/hotel-offers/by-hotel`
+- **Authentication**: `POST /v1/security/oauth2/token`
+
+### Firebase Services
+- **Authentication**: Регистрация, вход, восстановление пароля
+- **Firestore**: Профили пользователей, история бронирований
+- **Storage**: Загрузка аватаров и изображений
+
+## 📱 Поддерживаемые платформы
+
+- ✅ Android (API 21+)
+- ✅ iOS (iOS 12+)
+- ✅ Web (готово к развертыванию)
+- ✅ Windows (desktop)
+- ✅ macOS (desktop)
+- ✅ Linux (desktop)
+
+## 🚦 Статус разработки
+
+### ✅ Реализовано
+- [x] Базовая архитектура приложения
+- [x] Система авторизации с Firebase
+- [x] Онбординг и splash screen
+- [x] Навигация между экранами
+- [x] Интеграция с Amadeus API
+- [x] Управление состоянием с Provider
+- [x] Современный UI/UX дизайн
+- [x] Локальное хранение данных
+
+### 🔄 В разработке
+- [ ] Детальная страница отеля
+- [ ] Система бронирования
+- [ ] Карта с отелями
+- [ ] Push уведомления
+- [ ] Многоязычность
+
+### 📋 Планируется
+- [ ] Отзывы и рейтинги
+- [ ] Социальные функции
+- [ ] Программа лояльности
+- [ ] Интеграция с платежными системами
+- [ ] Офлайн режим
+- [ ] Расширенная аналитика
+
+## 🤝 Вклад в проект
+
+### Процесс разработки
+1. Fork репозитория
+2. Создайте feature branch
+3. Внесите изменения
+4. Добавьте тесты
+5. Создайте Pull Request
+
+### Стандарты кода
+- Следуйте Dart Style Guide
+- Используйте flutter_lints
+- Документируйте публичные методы
+- Добавляйте тесты для новой функциональности
+
+## 📄 Лицензия
+
+Этот проект распространяется под лицензией MIT.
+
+## 👨‍💻 Автор
+
+Разработано с ❤️ для создания лучшего опыта бронирования отелей.
+
+---
+
+### 🔗 Полезные ссылки
+
+- [Flutter Documentation](https://docs.flutter.dev/)
+- [Firebase Documentation](https://firebase.google.com/docs)
+- [Amadeus API Documentation](https://developers.amadeus.com/)
+- [Material Design 3](https://m3.material.io/)
+
+### 🎯 Roadmap 2024
+
+**Q1**: Базовая функциональность
+- Авторизация и профили
+- Поиск отелей
+- Основной UI
+
+**Q2**: Расширенные функции
+- Система бронирования
+- Платежи
+- Уведомления
+
+**Q3**: Улучшения UX
+- Персонализация
+- Рекомендации
+- Социальные функции
+
+**Q4**: Масштабирование
+- Производительность
+- Международные рынки
+- Партнерские интеграции
